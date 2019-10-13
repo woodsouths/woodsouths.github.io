@@ -6,22 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://woodsouths.github.io">
-  <title>union-find 并查集 | Drowning</title>
+  <title>ft | Drowning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Intro并查集，又称不相交集合，顾名思义，是支持“并”和“查”两种操作的集合：  并 union(x, y) - 合并元素x和元素y属于的集合； 查 find(x) - 判断元素x属于哪个集合；  一个应用 - 判断无向图是否有环对于包含N个顶点的无向图，我们首先对无向图的每个顶点建立一个集合(，然后对于遍历每条边，如果两个顶点属于一个集合，那么说明存在环，如果不属于，合并两个顶点所在的集合（合">
-<meta name="keywords" content="算法与数据结构">
-<meta property="og:type" content="article">
-<meta property="og:title" content="union-find 并查集">
-<meta property="og:url" content="http://woodsouths.github.io/2019/10/01/union-find/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="ft">
+<meta property="og:url" content="http://woodsouths.github.io/2019/10/12/ft/index.html">
 <meta property="og:site_name" content="Drowning">
-<meta property="og:description" content="Intro并查集，又称不相交集合，顾名思义，是支持“并”和“查”两种操作的集合：  并 union(x, y) - 合并元素x和元素y属于的集合； 查 find(x) - 判断元素x属于哪个集合；  一个应用 - 判断无向图是否有环对于包含N个顶点的无向图，我们首先对无向图的每个顶点建立一个集合(，然后对于遍历每条边，如果两个顶点属于一个集合，那么说明存在环，如果不属于，合并两个顶点所在的集合（合">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7ivym5wyfj30bg08ht8v.jpg">
-<meta property="og:updated_time" content="2019-10-06T08:02:36.245Z">
+<meta property="og:updated_time" content="2019-10-12T11:40:22.566Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="union-find 并查集">
-<meta name="twitter:description" content="Intro并查集，又称不相交集合，顾名思义，是支持“并”和“查”两种操作的集合：  并 union(x, y) - 合并元素x和元素y属于的集合； 查 find(x) - 判断元素x属于哪个集合；  一个应用 - 判断无向图是否有环对于包含N个顶点的无向图，我们首先对无向图的每个顶点建立一个集合(，然后对于遍历每条边，如果两个顶点属于一个集合，那么说明存在环，如果不属于，合并两个顶点所在的集合（合">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006y8mN6ly1g7ivym5wyfj30bg08ht8v.jpg">
+<meta name="twitter:title" content="ft">
   
     <link rel="alternative" href="/atom.xml" title="Drowning" type="application/atom+xml">
   
@@ -135,81 +129,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-union-find" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-ft" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      union-find 并查集
+      ft
     </h1>
   
 
         
-        <a href="/2019/10/01/union-find/" class="archive-article-date">
-  	<time datetime="2019-10-01T11:44:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-01</time>
+        <a href="/2019/10/12/ft/" class="archive-article-date">
+  	<time datetime="2019-10-12T11:40:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><p>并查集，又称不相交集合，顾名思义，是支持“并”和“查”两种操作的集合：</p>
-<ul>
-<li>并 union(x, y) - 合并元素x和元素y属于的集合；</li>
-<li>查 find(x) - 判断元素x属于哪个集合；</li>
-</ul>
-<h2 id="一个应用-判断无向图是否有环"><a href="#一个应用-判断无向图是否有环" class="headerlink" title="一个应用 - 判断无向图是否有环"></a>一个应用 - 判断无向图是否有环</h2><p>对于包含N个顶点的无向图，我们首先对无向图的每个顶点建立一个集合(，然后对于遍历每条边，如果两个顶点属于一个集合，那么说明存在环，如果不属于，合并两个顶点所在的集合（合并集合可以看作合并集合的父节点，将一个集合的父节点指向另一个集合的父节点）</p>
-<p><img src="https://tva1.sinaimg.cn/large/006y8mN6ly1g7ivym5wyfj30bg08ht8v.jpg" alt></p>
-<p>对于如图所示的图，我们首先对于每个顶点建立集合。对于N个顶点，par一开始初始化为自身</p>
-<blockquote>
-<p>0    1    2</p>
-<p>0    1    2</p>
-</blockquote>
-<p>对于边0-1，因为0、1属于不同集合，合并两个集合，parent[0]=1</p>
-<blockquote>
-<p>0     1    2</p>
-<p>1     1    2    </p>
-</blockquote>
-<p>对于边1-2，因为1，2属于不同集合，合并两个集合，parent[1]=2</p>
-<blockquote>
-<p>0    1    2</p>
-<p>1    2    2</p>
-</blockquote>
-<p>对于边0-2，因为0-1-2，2属于同一集合，所以说明存在环。代码如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, arr)</span>:</span></span><br><span class="line">        self.par = arr</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.par[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.find(self.par[x])</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        self.par[self.find(x)] = self.find(y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">has_cycle</span><span class="params">(nodes, edges)</span>:</span></span><br><span class="line">    uf = UF(nodes)</span><br><span class="line">    <span class="keyword">for</span> u, v <span class="keyword">in</span> edges:</span><br><span class="line">        <span class="keyword">if</span> uf.par[u] != uf.par[v]:</span><br><span class="line">            uf.union(u, v)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nodes = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">edges = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">1</span>, <span class="number">2</span>], [<span class="number">2</span>, <span class="number">1</span>]]</span><br><span class="line"><span class="keyword">assert</span> has_cycle(nodes, edges)</span><br></pre></td></tr></table></figure>
-
-<p>在这个naive的实现中，可以想象如果有一个无向图是从0-1-2-…-n-1，那么find(0)时需要n次才能找到从0找到n-1，find(1)时需要n-1次才能找到从1找到n-1，因此这种实现的find在最坏情况下时间复杂度是O(n)。</p>
-<h2 id="两种策略-路径压缩和按秩合并"><a href="#两种策略-路径压缩和按秩合并" class="headerlink" title="两种策略 - 路径压缩和按秩合并"></a>两种策略 - 路径压缩和按秩合并</h2><h3 id="改进find-路径压缩"><a href="#改进find-路径压缩" class="headerlink" title="改进find - 路径压缩"></a>改进find - 路径压缩</h3><p>在前面的实现中我们已经看到，find(0)要从0-1-2,..n-1，而find(1)又需要从1-2,..,n-1，显然一个可以优化的地方是，当我们从0往上找父节点时，中间经过的所有节点的父节点也被找到了，可以同时更新。因此带路径压缩的find算法如下</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> x != self.par[x]:</span><br><span class="line">    self.par[x] = self.find(self.par[x])</span><br><span class="line">  <span class="keyword">return</span> self.par[x]</span><br></pre></td></tr></table></figure>
-
-<p>这样做相当于，原先find(0)形成了一个0-1-2,..n-1的很深的树，现在变成了n-1的树有0,1,2…n-2这些节点，相当于flatten了这个搜索树，压缩了查找路径</p>
-<h3 id="改进union-按秩合并"><a href="#改进union-按秩合并" class="headerlink" title="改进union - 按秩合并"></a>改进union - 按秩合并</h3><p>如何union两个集合才能降低find时的时间复杂度呢，一个很自然的想法是让高度更小的树合并到高度更大的树上，这样可以使得最后形成的树整体高度更小（find时最坏复杂度更低），也就是说，维护一个rank表示当前集合的深度，union时，将rank更小的树的根节点指向rank更大的树的根节点。改进后的union find结构如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, arr)</span>:</span></span><br><span class="line">        self.par = arr</span><br><span class="line">        self.rank = [<span class="number">1</span>] * len(arr)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> x != self.par[x]:</span><br><span class="line">            self.par[x] = self.find(self.par[x])</span><br><span class="line">        <span class="keyword">return</span> self.par[x]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        xp, yp = self.find(x), self.find(y)</span><br><span class="line">        <span class="keyword">if</span> xp != yp:</span><br><span class="line">            <span class="keyword">if</span> self.rank[xp] &lt; self.rank[yp]:</span><br><span class="line">              self.par[xp] = yp</span><br><span class="line">            <span class="keyword">elif</span> self.rank[xp] &gt; self.rank[yp]:</span><br><span class="line">              self.par[yp] = xp</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">              self.par[xp] = yp</span><br><span class="line">              self.rank[yp] += <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="problem-sets"><a href="#problem-sets" class="headerlink" title="problem sets"></a>problem sets</h2><h3 id="LC-128-Longest-Consecutive-Sequence"><a href="#LC-128-Longest-Consecutive-Sequence" class="headerlink" title="LC 128. Longest Consecutive Sequence"></a>LC 128. Longest Consecutive Sequence</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>给定一个无序数组，返回包含的最长连续序列的长度</p>
-<p>例如：</p>
-<p>输入：[100, 4, 200, 1, 3, 2]</p>
-<p>输出：4 （包含[1, 2, 3, 4]</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>首先建一个数组{value, idx}的映射mm，对于数组的元素arr[i]=x，建立一个以x的下表i为索引的并查集，如果存在相邻的元素x-1/x+1，那么合并i和mm[x-1]/mm[x+1]，同时并查集中加入一个size记录集合的大小，union时按size合并，最后返回size的最大值。因为find和union操作近似常数时间复杂度，因此总的时间复杂度为O(n)。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.par = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</span><br><span class="line">        self.size = [<span class="number">1</span>] * n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.par[x] != x:</span><br><span class="line">            self.par[x] = self.find(self.par[x])</span><br><span class="line">        <span class="keyword">return</span> self.par[x]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        xp, yp = self.find(x), self.find(y)</span><br><span class="line">        <span class="keyword">if</span> xp != yp:</span><br><span class="line">            <span class="keyword">if</span> self.size[xp] &gt;= self.size[yp]:</span><br><span class="line">              yp, xp = xp, yp</span><br><span class="line">            self.par[xp] = yp</span><br><span class="line">            self.size[yp] += self.size[xp]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestConsecutive</span><span class="params">(self, nums: List[int])</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">if</span> nums <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> len(nums) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        mm = collections.defaultdict(int)</span><br><span class="line">        uf = UF(len(nums))</span><br><span class="line">        <span class="keyword">for</span> i, v <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            <span class="keyword">if</span> v <span class="keyword">not</span> <span class="keyword">in</span> mm:</span><br><span class="line">                mm[v] = i</span><br><span class="line">                <span class="keyword">if</span> v<span class="number">-1</span> <span class="keyword">in</span> mm:</span><br><span class="line">                    uf.union(mm[v<span class="number">-1</span>], i)</span><br><span class="line">                <span class="keyword">if</span> v+<span class="number">1</span> <span class="keyword">in</span> mm:</span><br><span class="line">                    uf.union(i, mm[v+<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> max(uf.size)</span><br></pre></td></tr></table></figure>
-
-<p>（这题当然也可以用哈希表做）</p>
-<h3 id="LC-200-Number-of-Islands"><a href="#LC-200-Number-of-Islands" class="headerlink" title="LC 200. Number of Islands"></a>LC 200. Number of Islands</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><p>给定一个由0，1组成的二维数组，0表示水，1表示陆地，水平或者垂直相邻的陆地相互连通，gird四周可以都看作是水，返回不连通的陆地的数量。</p>
-<p>例如：</p>
-<p>输入：[</p>
-<p>‘11110’,</p>
-<p>‘11010’,</p>
-<p>‘11000’,</p>
-<p>‘00000’]</p>
-<p>输出：</p>
-<p>1</p>
-<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>跟上一题相似建立一个二维数组位置到连通图中idx的映射，如果为1建立一个集合，存在相邻的陆地则合并两个对应的集合。这里改动了一下并查集的结构，首先是把par初始化为空，make_set时加入（其实也可以像之前一样初始化，这样做多少可以节省一点空间吧，而且反正都要make_set了，这样做num也比较make sense一点），然后加入一个num参数，表示当前的不相交集合的数量，每次make_set时加一，union两个不相交的集合时减一。最后返回uf.num即可，即为并查集中不相交集合的数目。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">mport collections</span><br><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> List</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UF</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.par = []</span><br><span class="line">        self.num = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">make_set</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.par.append(x)</span><br><span class="line">        self.num += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.par[x] != x:</span><br><span class="line">            self.par[x] = self.find(self.par[x])</span><br><span class="line">        <span class="keyword">return</span> self.par[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        xp, yp = self.find(x), self.find(y)</span><br><span class="line">        <span class="keyword">if</span> xp != yp:</span><br><span class="line">            self.par[xp] = yp</span><br><span class="line">            self.num -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numIslands</span><span class="params">(self, grid: List[List[str]])</span> -&gt; int:</span></span><br><span class="line">        <span class="keyword">if</span> grid <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">or</span> len(grid) == <span class="number">0</span> <span class="keyword">or</span> len(grid[<span class="number">0</span>]) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        m, n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        uf = UF()</span><br><span class="line">        mm = collections.defaultdict(int)</span><br><span class="line">        idx = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="string">'1'</span>:</span><br><span class="line">                    uf.make_set(idx)</span><br><span class="line">                    mm[(i, j)] = idx</span><br><span class="line">                    <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> (i<span class="number">-1</span>, j) <span class="keyword">in</span> mm:</span><br><span class="line">                        uf.union(idx, mm[(i<span class="number">-1</span>, j)])</span><br><span class="line">                    <span class="keyword">if</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> (i, j<span class="number">-1</span>) <span class="keyword">in</span> mm:</span><br><span class="line">                        uf.union(idx, mm[(i, j<span class="number">-1</span>)])</span><br><span class="line">                    idx += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> uf.num</span><br></pre></td></tr></table></figure>
-
-<p>(这题也可以用dfs做，感觉更简单)</p>
-
+        
       
 
       
@@ -217,17 +157,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法与数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -278,7 +207,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://woodsouths.github.io/2019/10/01/union-find/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://woodsouths.github.io/2019/10/12/ft/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -292,18 +221,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/10/06/157/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2019/10/13/158/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          leetcode weekly contest 157
+          leetcode weekly contest 158
         
       </div>
     </a>
   
   
-    <a href="/2019/09/30/156/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">leetcode weekly contest 156</div>
+    <a href="/2019/10/11/dfs-bfs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">dfs-bfs</div>
       <i class="icon-circle-right"></i>
     </a>
   
