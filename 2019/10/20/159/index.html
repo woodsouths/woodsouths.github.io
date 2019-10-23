@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://woodsouths.github.io">
   <title>leetcode weekly contest 158 | Drowning</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="（今天写的好烂啊===） 1232. Check If It Is a Straight Line问题给定一组二维坐标点，判断这些点是否都在一条直线上。 例如： 12输入： coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]输入: true  思路考虑两种情况  在一条垂直的直线上，那么所有的x坐标都相等 否则，取x坐标最小的点，所有的点与这个点">
+  <meta name="description" content="1232. Check If It Is a Straight Line问题给定一组二维坐标点，判断这些点是否都在一条直线上。 例如： 12输入： coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]输入: true  思路考虑两种情况  在一条垂直的直线上，那么所有的x坐标都相等 否则，取x坐标最小的点，所有的点与这个点的连线的斜率相等  123">
 <meta name="keywords" content="leetcode_weekly_contest">
 <meta property="og:type" content="article">
 <meta property="og:title" content="leetcode weekly contest 158">
 <meta property="og:url" content="http://woodsouths.github.io/2019/10/20/159/index.html">
 <meta property="og:site_name" content="Drowning">
-<meta property="og:description" content="（今天写的好烂啊===） 1232. Check If It Is a Straight Line问题给定一组二维坐标点，判断这些点是否都在一条直线上。 例如： 12输入： coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]输入: true  思路考虑两种情况  在一条垂直的直线上，那么所有的x坐标都相等 否则，取x坐标最小的点，所有的点与这个点">
+<meta property="og:description" content="1232. Check If It Is a Straight Line问题给定一组二维坐标点，判断这些点是否都在一条直线上。 例如： 12输入： coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]输入: true  思路考虑两种情况  在一条垂直的直线上，那么所有的x坐标都相等 否则，取x坐标最小的点，所有的点与这个点的连线的斜率相等  123">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:updated_time" content="2019-10-20T09:20:07.542Z">
+<meta property="og:updated_time" content="2019-10-23T08:42:12.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode weekly contest 158">
-<meta name="twitter:description" content="（今天写的好烂啊===） 1232. Check If It Is a Straight Line问题给定一组二维坐标点，判断这些点是否都在一条直线上。 例如： 12输入： coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]输入: true  思路考虑两种情况  在一条垂直的直线上，那么所有的x坐标都相等 否则，取x坐标最小的点，所有的点与这个点">
+<meta name="twitter:description" content="1232. Check If It Is a Straight Line问题给定一组二维坐标点，判断这些点是否都在一条直线上。 例如： 12输入： coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]输入: true  思路考虑两种情况  在一条垂直的直线上，那么所有的x坐标都相等 否则，取x坐标最小的点，所有的点与这个点的连线的斜率相等  123">
   
     <link rel="alternative" href="/atom.xml" title="Drowning" type="application/atom+xml">
   
@@ -153,8 +153,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>（今天写的好烂啊===）</p>
-<h2 id="1232-Check-If-It-Is-a-Straight-Line"><a href="#1232-Check-If-It-Is-a-Straight-Line" class="headerlink" title="1232. Check If It Is a Straight Line"></a>1232. Check If It Is a Straight Line</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>给定一组二维坐标点，判断这些点是否都在一条直线上。</p>
+        <h2 id="1232-Check-If-It-Is-a-Straight-Line"><a href="#1232-Check-If-It-Is-a-Straight-Line" class="headerlink" title="1232. Check If It Is a Straight Line"></a>1232. Check If It Is a Straight Line</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>给定一组二维坐标点，判断这些点是否都在一条直线上。</p>
 <p>例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入： coordinates = [[1,2],[2,3],[3,4],[4,5],[5,6],[6,7]]</span><br><span class="line">输入: true</span><br></pre></td></tr></table></figure>
 
@@ -215,7 +214,11 @@
 <p>一个更加机智的思路[4]是维护一组这样的dp [[x, y]]，y表示占用时间到x时的最大利润，同时在维护过程中保证dp是有序的（按y排序），初始化为dp = [[0, 0]]，先贪心的对所有作业按结束时间排序（先结束的先做），然后每次考虑第i个作业时，最大利润为在dp中找到x=startTime[i]+1的最左边对应的y（可以用二分查找）+ profit[i]，可以理解为做第i个作业开始时间前的最大利润+第i个作业的利润。（能够这样保证、因为dp是有序的）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">jobScheduling</span><span class="params">(self, startTime, endTime, profit)</span>:</span></span><br><span class="line">        jobs = sorted(zip(startTime, endTime, profit), key=<span class="keyword">lambda</span> v: v[<span class="number">1</span>])</span><br><span class="line">        dp = [[<span class="number">0</span>, <span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">for</span> s, e, p <span class="keyword">in</span> jobs:</span><br><span class="line">            i = bisect.bisect(dp, [s + <span class="number">1</span>]) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> dp[i][<span class="number">1</span>] + p &gt; dp[<span class="number">-1</span>][<span class="number">1</span>]:</span><br><span class="line">                dp.append([e, dp[i][<span class="number">1</span>] + p])</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>][<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 
-<p>(为什么小于不需要添加，可以这么考虑，因为已经按结束时间排序了，所以如果作业i导致结束时间变长，利润还没有变大，那么显然没有必要进行作业i)</p>
+<ul>
+<li><p>Q: 为什么$dp[i][1] &lt; dp[-1]][1] $时不需要添加</p>
+<p>A: $dp[i][1] &lt; dp[-1]][1]$是加入当前作业能得到的最大利润，因为作业已经按结束时间排序了，加入当前的作业之后结束时间必然会变长，如果结束时间变长而利润没有加大，因此没有必要加入当前的作业</p>
+</li>
+</ul>
 <h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><p>[1] <a href="https://leetcode.com/problems/check-if-it-is-a-straight-line/discuss/408986/Python-Solution" target="_blank" rel="noopener">https://leetcode.com/problems/check-if-it-is-a-straight-line/discuss/408986/Python-Solution</a></p>
 <p>[2] <a href="https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/discuss/409028/JavaPython-3-2-simple-methods-check-parent-w-brief-explanation-and-analysis" target="_blank" rel="noopener">https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/discuss/409028/JavaPython-3-2-simple-methods-check-parent-w-brief-explanation-and-analysis</a>.</p>
 <p>[3] <a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/JavaC%2B%2BPython-Sliding-Window" target="_blank" rel="noopener">https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/JavaC%2B%2BPython-Sliding-Window</a></p>
